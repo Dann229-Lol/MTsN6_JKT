@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>MTsN 6 Jakarta — Versi Sederhana</title>
+  <style>
+    :root{
+      --primary:#0b65a3;
+      --accent:#f2a300;
+      --muted:#6b7280;
+      --bg:#f6f7f9;
+      --card:#ffffff;
+      --maxw:1100px;
+      --radius:8px;
+      font-family: "Helvetica Neue", Arial, sans-serif;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:#222;
+      -webkit-font-smoothing:antialiased;
+    }
+
+    /* Container */
+    .container{
+      max-width:var(--maxw);
+      margin:20px auto;
+      padding:0 16px;
+    }
+
+    /* Topbar */
+    .topbar{
+      background:#fff;
+      border-bottom:1px solid #e6e9ef;
+      padding:10px 0;
+    }
+    .topbar .inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      text-decoration:none;
+      color:var(--primary);
+    }
+    .brand img{
+      width:56px;
+      height:56px;
+      object-fit:cover;
+      border-radius:6px;
+      border:2px solid rgba(11,101,163,0.08);
+      background:#fff;
+    }
+    .brand h1{font-size:1.1rem;margin:0;}
+    .brand p{margin:0;font-size:0.8rem;color:var(--muted);}
+
+    /* Nav */
+    nav{
+      margin-top:12px;
+      background:var(--primary);
+      color:#fff;
+      border-radius:10px;
+      padding:8px;
+    }
+    .nav-inner{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      justify-content:center;
+    }
+    .nav-inner a{
+      color:#fff;
+      text-decoration:none;
+      padding:8px 12px;
+      font-size:0.95rem;
+      border-radius:6px;
+    }
+    .nav-inner a:hover{background:rgba(255,255,255,0.08)}
+
+    /* Hero / Slider */
+    .hero{
+      margin-top:18px;
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:16px;
+    }
+    .slider{
+      position:relative;
+      border-radius:var(--radius);
+      overflow:hidden;
+      background:#000;
+      min-height:220px;
+    }
+    .slide{
+      position:absolute;
+      inset:0;
+      display:flex;
+      align-items:flex-end;
+      padding:18px;
+      background:linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,0.5));
+      color:#fff;
+      transition:opacity .6s ease;
+      opacity:0;
+      pointer-events:none;
+    }
+    .slide.active{opacity:1;pointer-events:auto}
+    .slide h2{margin:0;font-size:1.2rem}
+    .slide p{margin:6px 0 0;font-size:0.9rem}
+
+    .slider .dots{
+      position:absolute;
+      left:12px;
+      bottom:12px;
+      display:flex;
+      gap:8px;
+    }
+    .dots button{
+      width:10px;height:10px;border-radius:999px;border:none;background:rgba(255,255,255,0.45);cursor:pointer;
+    }
+    .dots button.active{background:var(--accent);width:14px;height:14px}
+
+    /* Layout main area */
+    .grid{
+      margin-top:16px;
+      display:grid;
+      grid-template-columns: 2fr 1fr;
+      gap:16px;
+    }
+
+    /* Cards / News */
+    .card{
+      background:var(--card);
+      border-radius:var(--radius);
+      padding:14px;
+      box-shadow: 0 6px 18px rgba(15,23,42,0.04);
+    }
+    .news-list{display:flex;flex-direction:column;gap:10px}
+    .news-item{
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      padding:8px;
+      border-radius:8px;
+      transition:background .15s;
+    }
+    .news-item:hover{background:#fbfcfe}
+    .news-thumb{
+      width:96px;height:64px;flex:0 0 96px;border-radius:6px;background:#ddd;object-fit:cover;
+    }
+    .news-body h3{margin:0;font-size:1rem}
+    .news-body p{margin:6px 0 0;color:var(--muted);font-size:0.9rem}
+
+    /* Sidebar */
+    .sidebar .box{margin-bottom:12px;padding:12px;border-radius:8px;background:linear-gradient(180deg,#fff,#fbfdff);border:1px solid #eef2f7}
+    .sidebar h4{margin:0 0 8px 0}
+    .ppdb-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px}
+    .ppdb-list li{font-size:0.95rem}
+
+    .contact-btn{
+      display:inline-block;padding:10px 12px;border-radius:8px;background:var(--accent);color:#fff;text-decoration:none;font-weight:600;
+    }
+
+    /* Footer */
+    footer{
+      margin-top:24px;padding:18px;border-radius:10px;background:#0b2f47;color:#fff;text-align:center;
+    }
+
+    /* Responsive */
+    @media (max-width:900px){
+      .grid{grid-template-columns:1fr}
+      .topbar .inner{flex-direction:column;align-items:flex-start;gap:8px}
+      .brand img{width:48px;height:48px}
+      .nav-inner{justify-content:flex-start;overflow:auto;padding-bottom:4px}
+    }
+  </style>
+</head>
+<body>
+  <!-- Top bar -->
+  <div class="topbar">
+    <div class="container">
+      <div class="inner">
+        <a class="brand" href="#">
+          <!-- Ganti src gambar dengan logo sekolah -->
+          <img src="https://via.placeholder.com/150x150.png?text=Logo" alt="Logo MTsN6" />
+          <div>
+            <h1>MTsN 6 Jakarta</h1>
+            <p>Madrasah Tsanawiyah Negeri 6 Jakarta</p>
+          </div>
+        </a>
+
+        <!-- kontak singkat -->
+        <div style="text-align:right">
+          <div style="font-size:0.95rem;color:var(--muted)">Kontak: (021) 1234-567</div>
+          <a class="contact-btn" href="https://wa.me/6281234567890" target="_blank" rel="noopener">Hubungi via WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <div class="container" style="margin-top:10px">
+    <nav>
+      <div class="nav-inner">
+        <a href="#">Beranda</a>
+        <a href="#">Profil</a>
+        <a href="#">Berita</a>
+        <a href="#">PPDB</a>
+        <a href="#">Prestasi</a>
+        <a href="#">E-Learning</a>
+        <a href="#">Artikel Guru</a>
+      </div>
+    </nav>
+  </div>
+
+  <!-- Hero & content -->
+  <div class="container">
+    <div class="hero">
+      <!-- Slider -->
+      <div class="slider card" id="slider">
+        <div class="slide active" data-index="0">
+          <img src="https://via.placeholder.com/1200x400.png?text=Kegiatan+Madrasah" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.8"/>
+          <div>
+            <h2>Upacara Bendera Mingguan</h2>
+            <p>Menanamkan disiplin dan karakter kepada seluruh siswa.</p>
+          </div>
+        </div>
+        <div class="slide" data-index="1">
+          <img src="https://via.placeholder.com/1200x400.png?text=PPDB+2025" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.8"/>
+          <div>
+            <h2>PPDB 2025 — Pendaftaran Dibuka</h2>
+            <p>Informasi lengkap tentang pendaftaran dan persyaratan.</p>
+          </div>
+        </div>
+        <div class="slide" data-index="2">
+          <img src="https://via.placeholder.com/1200x400.png?text=Prestasi+Siswa" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.8"/>
+          <div>
+            <h2>Prestasi Siswa</h2>
+            <p>Penghargaan lomba tingkat provinsi.</p>
+          </div>
+        </div>
+
+        <div class="dots" id="dots"></div>
+      </div>
+
+      <!-- grid: news + sidebar -->
+      <div class="grid">
+        <!-- Left: Berita -->
+        <div>
+          <div class="card">
+            <h3 style="margin-top:0">Berita Terbaru</h3>
+            <div class="news-list" id="newsList">
+              <!-- contoh item -->
+              <article class="news-item">
+                <img class="news-thumb" src="https://via.placeholder.com/300x200.png?text=Berita+1" alt="">
+                <div class="news-body">
+                  <h3>Kelulusan Kelas IX Tahun 2025</h3>
+                  <p>Pengumuman resmi kelulusan dapat diunduh pada halaman pengumuman.</p>
+                </div>
+              </article>
+
+              <article class="news-item">
+                <img class="news-thumb" src="https://via.placeholder.com/300x200.png?text=Kegiatan" alt="">
+                <div class="news-body">
+                  <h3>Upacara Peringatan Hari Santri</h3>
+                  <p>Siswa mengikuti lomba pekan religius sekolah.</p>
+                </div>
+              </article>
+
+              <article class="news-item">
+                <img class="news-thumb" src="https://via.placeholder.com/300x200.png?text=PPDB" alt="">
+                <div class="news-body">
+                  <h3>Info Pemberkasan PPDB</h3>
+                  <p>Pendaftaran calon siswa dilakukan secara daring dan manual.</p>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <!-- optional : more content -->
+          <div class="card" style="margin-top:12px">
+            <h3 style="margin-top:0">Pengumuman</h3>
+            <ul style="margin:0;padding-left:18px;color:var(--muted)">
+              <li>Jadwal ujian semester — 10 Juni 2025</li>
+              <li>Libur semester genap — 20 Juni 2025</li>
+              <li>Pembagian raport — Sabtu, 28 Juni 2025</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Right: Sidebar -->
+        <aside class="sidebar">
+          <div class="box card">
+            <h4>PPDB</h4>
+            <p style="color:var(--muted);margin:0 0 8px 0">Pendaftaran peserta didik baru — lihat info lengkap:</p>
+            <ul class="ppdb-list">
+              <li><strong>Tanggal:</strong> 17 — 26 Feb 2025</li>
+              <li><strong>Jalur:</strong> Zonasi, Prestasi, Mutasi</li>
+              <li><a href="#" style="color:var(--primary);text-decoration:none">Panduan Pendaftaran (PDF)</a></li>
+            </ul>
+          </div>
+
+          <div class="box card">
+            <h4>Kontak Sekolah</h4>
+            <p style="margin:0 0 8px 0;color:var(--muted)">Alamat: Jl. Contoh No. 1, Jakarta</p>
+            <p style="margin:0 0 12px 0">Telp: (021) 1234-567</p>
+            <a class="contact-btn" href="https://wa.me/6281234567890" target="_blank" rel="noopener">Hubungi via WhatsApp</a>
+          </div>
+
+          <div class="box card">
+            <h4>Link Cepat</h4>
+            <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px">
+              <li><a href="#" style="text-decoration:none;color:var(--primary)">E-Learning</a></li>
+              <li><a href="#" style="text-decoration:none;color:var(--primary)">Artikel Guru</a></li>
+              <li><a href="#" style="text-decoration:none;color:var(--primary)">Galeri</a></li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="container">
+    <footer>
+      <div style="max-width:900px;margin:0 auto">
+        <strong>MTsN 6 Jakarta</strong> — Semua hak cipta &copy; 2025<br>
+        <small>Alamat lengkap • Telepon • Email</small>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Simple JS for slider (no dependencies) -->
+  <script>
+    (function(){
+      const slides = Array.from(document.querySelectorAll('.slide'));
+      const dotsWrap = document.getElementById('dots');
+      let idx = 0;
+      // create dots
+      slides.forEach((s,i) => {
+        const btn = document.createElement('button');
+        if(i===0) btn.classList.add('active');
+        btn.addEventListener('click', () => { goTo(i); });
+        dotsWrap.appendChild(btn);
+      });
+      const dots = Array.from(dotsWrap.children);
+
+      function show(i){
+        slides.forEach(s => s.classList.remove('active'));
+        dots.forEach(d => d.classList.remove('active'));
+        slides[i].classList.add('active');
+        dots[i].classList.add('active');
+      }
+      function goTo(i){
+        idx = i;
+        show(idx);
+      }
+      function next(){
+        idx = (idx + 1) % slides.length;
+        show(idx);
+      }
+      // auto-play
+      let timer = setInterval(next, 4500);
+      // pause on hover
+      const slider = document.getElementById('slider');
+      slider.addEventListener('mouseenter', () => clearInterval(timer));
+      slider.addEventListener('mouseleave', () => timer = setInterval(next,4500));
+    })();
+  </script>
+</body>
+</html>
