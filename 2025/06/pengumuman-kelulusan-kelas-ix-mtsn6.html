@@ -7,19 +7,19 @@
   <meta name="description" content="pengumuman kelulusan kelas IX MTsN 6 Jakarta Tahun Pelajaran 2024/2025." />
   <style>
     :root{
-      --bg:#0f172a;        /* slate-900 */
-      --card:#111827;      /* gray-900 */
-      --muted:#94a3b8;     /* slate-400 */
-      --text:#e5e7eb;      /* gray-200 */
-      --accent:#22c55e;    /* green-500 */
-      --accent-2:#38bdf8;  /* sky-400 */
+      --bg:#0f172a;
+      --card:#111827;
+      --muted:#94a3b8;
+      --text:#e5e7eb;
+      --accent:#22c55e;
+      --accent-2:#38bdf8;
     }
     *{box-sizing:border-box}
     body{
       margin:0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+      font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Helvetica Neue",Arial,"Noto Sans";
       color:var(--text);
-      background: radial-gradient(1200px 600px at 20% -10%, #1e293b 0, rgba(15,23,42,0) 60%), 
+      background: radial-gradient(1200px 600px at 20% -10%, #1e293b 0, rgba(15,23,42,0) 60%),
                   radial-gradient(1200px 600px at 120% 10%, #0ea5e9 0, rgba(15,23,42,0) 35%),
                   var(--bg);
       min-height:100svh;
@@ -34,41 +34,32 @@
       box-shadow: 0 20px 60px rgba(0,0,0,.45);
       overflow:hidden;
     }
-    header{
-      padding:28px 28px 0 28px;
-    }
+    header{ padding:28px 28px 0 28px; }
     .badge{
       display:inline-flex; gap:8px; align-items:center;
       padding:8px 12px; border-radius:999px;
       border:1px solid rgba(255,255,255,0.14);
-      color:var(--muted);
-      font-size:12px; letter-spacing:.02em;
+      color:var(--muted); font-size:12px;
       background:rgba(2,6,23,.35);
     }
     h1{
       font-size: clamp(22px, 3.6vw, 38px);
       line-height:1.15; margin:14px 0 6px 0; font-weight:800;
-      letter-spacing:.3px;
       background:linear-gradient(180deg, #fff, #cbd5e1);
       -webkit-background-clip:text; background-clip:text; color:transparent;
     }
-    .meta{
-      color:var(--muted); font-size:14px; margin-bottom:18px;
-    }
+    .meta{ color:var(--muted); font-size:14px; margin-bottom:18px; }
     .actions{ display:flex; gap:10px; flex-wrap:wrap; margin-top:8px; }
     .btn{
       appearance:none; border:1px solid rgba(255,255,255,.18);
       background:linear-gradient(180deg, rgba(56,189,248,.18), rgba(56,189,248,.10));
       color:#e2f3ff; padding:10px 14px; border-radius:12px;
       font-weight:600; cursor:pointer;
-      transition:transform .15s ease, background .15s ease, border-color .15s ease;
+      transition:transform .15s ease, border-color .15s ease;
     }
     .btn:hover{ transform:translateY(-1px); border-color:rgba(56,189,248,.5); }
     .btn.secondary{ background:linear-gradient(180deg, rgba(34,197,94,.18), rgba(34,197,94,.10)); color:#eafff1; }
-    .content{
-      padding: 0 28px 28px 28px;
-      display:grid; gap:18px;
-    }
+    .content{ padding: 0 28px 28px 28px; display:grid; gap:18px; }
     figure{
       margin:0; background:rgba(2,6,23,.35);
       border:1px solid rgba(255,255,255,.08);
@@ -84,12 +75,10 @@
       padding:16px; border:1px dashed rgba(148,163,184,.35);
       border-radius:14px; background:rgba(2,6,23,.25); color:#f1f5f9;
     }
-    .source{
-      font-size:13px; color:var(--muted); margin-top:4px
-    }
+    .source{ font-size:13px; color:var(--muted); margin-top:4px }
     footer{
       padding: 0 28px 28px 28px; color:var(--muted); font-size:12px;
-      display:flex; justify-content:space-between; align-items:center; gap:8px; flex-wrap:wrap;
+      display:flex; justify-content:space-between; flex-wrap:wrap;
     }
     a{ color: var(--accent-2); text-decoration: none; }
     a:hover{ text-decoration: underline; }
@@ -99,49 +88,81 @@
       .btn{ display:none; }
       a{ color:#000; text-decoration:none; }
     }
+    /* Tombol WhatsApp melayang */
+    .wa-btn {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      z-index: 999;
+      background: linear-gradient(180deg, rgba(37,211,102,.9), rgba(37,211,102,.75));
+      color: white;
+      border: none;
+      padding: 10px 14px;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      backdrop-filter: blur(6px);
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+    .wa-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+    }
   </style>
 </head>
 <body>
+
+  <!-- Tombol WhatsApp -->
+  <a class="wa-btn" href="https://wa.me/6285929809036" target="_blank" rel="noopener" aria-label="Hubungi via WhatsApp">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="20" height="20" fill="currentColor">
+      <path d="M380.9 97.1C339 55.1 283.2 32 224.1 32c-105.7 0-192 86.2-192 192 
+      0 33.8 8.9 66.6 25.8 95.7L32 480l164.7-43.4c28 15.3 59.5 23.4 91.4 
+      23.4h.1c105.7 0 192-86.2 192-192 0-59.1-23.1-114.9-65.3-157zm-156.8 
+      284.3c-27.1 0-53.6-7.3-76.5-21.1l-5.5-3.3-97.6 25.7 26-95.1-3.6-5.8c-15.9-25.6-24.3-55.3-24.3-85.8 
+      0-88.3 71.8-160.1 160.1-160.1 42.8 0 83 16.7 113.2 46.9 30.2 30.2 
+      46.9 70.4 46.9 113.2-.1 88.3-71.9 160.1-160.2 160.1zm90.5-120.4c-4.9-2.5-29-14.3-33.5-15.9-4.5-1.7-7.7-2.5-11 2.5s-12.6 15.9-15.5 
+      19.2-5.7 3.8-10.6 1.3-20.7-7.6-39.5-24.3c-14.6-13-24.5-29-27.3-33.9s-.3-7.6 
+      2.2-10.1c2.3-2.3 5.1-6 7.6-9 2.5-3 3.3-5.1 5-8.6 
+      1.7-3.4.8-6.4-.4-9-1.3-2.5-11-26.5-15.1-36.3-4-9.7-8.1-8.4-11-8.5-2.8-.1-6.1-.1-9.4-.1s-8.6 1.3-13.1 
+      6.4c-4.5 4.9-17.2 16.8-17.2 41s17.6 47.6 20 50.9 34.4 52.6 83.4 73.8c11.6 
+      5 20.6 8 27.6 10.2 11.6 3.7 22.1 3.2 30.4 2 
+      9.3-1.4 29-11.9 33.1-23.4s4.1-21.3 2.8-23.4c-1.2-2.1-4.4-3.4-9.3-5.9z"/>
+    </svg>
+    WhatsApp
+  </a>
+
   <main class="container" role="main" aria-labelledby="judul">
     <header>
-      <span class="badge" aria-label="Jenis pengumuman">Pengumuman Kelulusan</span>
+      <span class="badge">Pengumuman Kelulusan</span>
       <h1 id="judul">Kelulusan Kelas IX MTsN 6 Jakarta — TP 2024/2025</h1>
-      <div class="meta" aria-label="Tanggal terbit">
-       2 Juni 2025
-      </div>
+      <div class="meta">2 Juni 2025</div>
       <div class="actions">
         <button class="btn" onclick="window.print()">Cetak Isi Web Ini</button>
-        <a class="btn secondary" href="https://drive.google.com/file/d/1cMPjnyq5MvL8NzwlWAa57rZBTMEtlq32/view" rel="noopener" target="_blank">Berkas Pengumuman</a>
+        <a class="btn secondary" href="https://drive.google.com/file/d/1cMPjnyq5MvL8NzwlWAa57rZBTMEtlq32/view" target="_blank">Berkas Pengumuman</a>
       </div>
     </header>
 
     <section class="content">
       <figure>
-        <!-- Gambar dari halaman sumber -->
-        <img
-          alt="Pengumuman kelulusan siswa kelas IX MTsN 6 Jakarta TP 2024/2025"
+        <img alt="Ilustrasi tulisan pengumuman kelulusan siswa kelas IX MTsN 6 Jakarta TP 2024/2025"
           src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhFnUQtFlAmhCD7fcCClu5HpGy20x4J8TTN74xQZDkZo_uPnnBX2xvR73gwiCP267J6KSE7v9DSSxT7HXtTR2zhz8yNCEczbHL-Es7Kl6VmrZIlKWABhstn13HCl2YQoikI9nxZofeEskAtGxxuwdUj4baUUjUzfUx4OeUqkeE1gACzT2-lYFeAn3v9QAQ/s320/Screenshot%202025-06-02%20101628.png" />
         <figcaption>Pengumuman kelulusan.</figcaption>
       </figure>
 
       <div class="body">
-        <!-- ====== Tempat menempel isi lengkap pengumuman ======
-             Silakan tempelkan teks resmi pengumuman dari sekolah di area ini.
-             Jika ada daftar nama/tautan lampiran, kamu bisa menambahkan list atau link di bawah.
-        -->
         <p><strong>Deskripsi Web</strong> Halaman ini menayangkan informasi kelulusan kelas IX untuk Tahun Pelajaran 2024/2025 dari MTsN 6 Jakarta.</p>
-
-        <!-- Contoh struktur untuk data tambahan -->
         <ul>
           <li>Waktu rilis: Senin, 2 Juni 2025</li>
           <li>Kontak sekolah: (isi jika diperlukan)</li>
-          <li>Tautan Utama Sekolah: <a href="#" onclick="return false;">https://www.mtsn6-jkt.sch.id</a></li>
+          <li>Tautan Utama Sekolah: <a href="https://www.mtsn6-jkt.sch.id" target="_blank">https://www.mtsn6-jkt.sch.id</a></li>
         </ul>
       </div>
 
-      <p class="source">
-        Sumber resmi: MTs Negeri 6 Jakarta
-      </p>
+      <p class="source">Sumber resmi: MTs Negeri 6 Jakarta</p>
     </section>
 
     <footer>
